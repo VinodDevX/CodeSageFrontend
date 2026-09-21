@@ -1,0 +1,146 @@
+.how-it-works {
+  width: 100%;
+  background: #050505;
+  padding: 110px 8%;
+  font-family: "Inter", sans-serif;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.section-title h2 {
+  color: #fff;
+  font-size: 52px;
+  font-weight: 700;
+}
+
+.section-title p {
+  color: #8d8d8d;
+  font-size: 18px;
+  margin-top: 14px;
+}
+
+.steps-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.step {
+  width: 250px;
+  text-align: center;
+}
+
+.icon-box {
+  width: 90px;
+  height: 90px;
+
+  margin: 0 auto;
+
+  border-radius: 50%; /* Circle */
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: #b84dff;
+
+  border: 2px solid rgba(161, 74, 255, 0.35);
+
+  background: radial-gradient(
+    circle,
+    rgba(136, 63, 255, 0.18) 0%,
+    rgba(136, 63, 255, 0.06) 60%,
+    transparent 100%
+  );
+  box-shadow:
+    0 0 12px rgba(150, 70, 255, 0.4),
+    0 0 25px rgba(150, 70, 255, 0.25),
+    inset 0 0 18px rgba(150, 70, 255, 0.15);
+
+  transition: all 0.3s ease;
+}
+
+.blue {
+  color: #4da8ff;
+
+  border: 1px solid rgba(77, 168, 255, 0.45);
+
+  background: rgba(77, 168, 255, 0.08);
+
+  box-shadow:
+    0 0 30px rgba(77, 168, 255, 0.35),
+    inset 0 0 20px rgba(77, 168, 255, 0.12);
+}
+.icon-box.blue {
+  color: #4da6ff;
+
+  border: 2px solid rgba(77, 166, 255, 0.4);
+
+  background: radial-gradient(
+    circle,
+    rgba(77, 166, 255, 0.18) 0%,
+    rgba(77, 166, 255, 0.06) 60%,
+    transparent 100%
+  );
+
+  box-shadow:
+    0 0 12px rgba(77, 166, 255, 0.4),
+    0 0 25px rgba(77, 166, 255, 0.25),
+    inset 0 0 18px rgba(77, 166, 255, 0.15);
+}
+
+.icon-box:hover {
+  transform: translateY(-6px) scale(1.05);
+
+  box-shadow:
+    0 0 18px rgba(150, 70, 255, 0.6),
+    0 0 40px rgba(150, 70, 255, 0.4);
+}
+
+.step h3 {
+  color: #fff;
+  font-size: 30px;
+  font-weight: 600;
+  margin-top: 28px;
+  margin-bottom: 18px;
+}
+
+.step p {
+  color: #9b9b9b;
+  line-height: 1.8;
+  font-size: 17px;
+}
+
+.line {
+  width: 150px;
+  margin-top: 46px;
+  border-top: 2px dashed #7a33ff;
+  opacity: 0.7;
+}
+
+@media (max-width: 1200px) {
+  .steps-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .line {
+    width: 2px;
+    height: 80px;
+    border-top: none;
+    border-left: 2px dashed #7a33ff;
+    margin: 30px 0;
+  }
+
+  .step {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .section-title h2 {
+    font-size: 38px;
+  }
+}

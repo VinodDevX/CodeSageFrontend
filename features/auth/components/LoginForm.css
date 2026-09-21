@@ -1,0 +1,530 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #070713;
+}
+
+/* =========================
+   MAIN BACKGROUND
+========================= */
+
+.login-page {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(124, 92, 255, 0.22),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(0, 174, 255, 0.12),
+      transparent 40%
+    ),
+    linear-gradient(135deg, #050510, #0b0b18, #070713);
+}
+
+/* =========================
+   STARS
+========================= */
+
+.stars {
+  position: absolute;
+  inset: 0;
+  opacity: 0.5;
+
+  background-image:
+    radial-gradient(2px 2px at 10% 20%, white, transparent),
+    radial-gradient(2px 2px at 30% 70%, white, transparent),
+    radial-gradient(1.5px 1.5px at 50% 35%, white, transparent),
+    radial-gradient(2px 2px at 80% 20%, white, transparent),
+    radial-gradient(2px 2px at 90% 75%, white, transparent);
+}
+
+/* =========================
+   PLANET
+========================= */
+
+.planet {
+  position: absolute;
+
+  left: -240px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  width: 650px;
+  height: 650px;
+
+  border-radius: 50%;
+
+  background: radial-gradient(circle at 35% 35%, #8275ff, #5745ff 45%, #271777);
+
+  box-shadow:
+    0 0 100px rgba(117, 94, 255, 0.6),
+    inset -80px -80px 120px rgba(0, 0, 0, 0.5);
+}
+
+/* =========================
+   WAVES
+========================= */
+
+.waves {
+  position: absolute;
+  inset: 0;
+}
+
+.waves::before {
+  content: "";
+
+  position: absolute;
+
+  right: 25%;
+  top: -20%;
+
+  width: 900px;
+  height: 140%;
+
+  background: repeating-radial-gradient(
+    circle,
+    transparent 0 18px,
+    rgba(255, 255, 255, 0.15) 20px
+  );
+
+  transform: rotate(-18deg);
+
+  opacity: 0.15;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+.login-container {
+  position: relative;
+  z-index: 2;
+
+  height: 100vh;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 7%;
+}
+
+/* =========================
+   LEFT SECTION
+========================= */
+
+.left-section {
+  width: 40%;
+  margin-left: 100px;
+  color: white;
+}
+
+.logo {
+  display: flex;
+  margin-right: 100%;
+}
+
+.logo img {
+  width: 300px;
+}
+
+.logo h2 {
+  font-size: 34px;
+
+  font-weight: 800;
+}
+
+.logo span {
+  color: #9387ff;
+}
+.hero-content {
+  margin-bottom: 100px;
+}
+.hero-content h1 {
+  font-size: 72px;
+
+  font-weight: 800;
+}
+
+.hero-content h1 span {
+  color: #9488ff;
+}
+
+.hero-content > p {
+  margin-top: 22px;
+
+  font-size: 20px;
+
+  color: #c5c5d5;
+}
+
+.feature-list {
+  margin-top: 55px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 26px;
+}
+
+.feature {
+  display: flex;
+
+  gap: 20px;
+
+  align-items: flex-start;
+}
+
+.feature-icon {
+  width: 58px;
+
+  height: 58px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 18px;
+
+  background: rgba(255, 255, 255, 0.08);
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  color: #9589ff;
+}
+
+.feature h4 {
+  font-size: 19px;
+
+  margin-bottom: 8px;
+}
+
+.feature p {
+  color: #b7b7c7;
+
+  font-size: 15px;
+
+  line-height: 25px;
+
+  max-width: 380px;
+}
+
+/* =========================
+   RIGHT LOGIN CARD
+========================= */
+
+.right-section {
+  width: 70%;
+
+  display: flex;
+
+  justify-content: flex-end;
+}
+
+.login-card {
+  width: 576px;
+
+  padding: 42px;
+
+  border-radius: 28px;
+
+  background: rgba(18, 18, 35, 0.78);
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  backdrop-filter: blur(20px);
+
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+
+  color: white;
+}
+
+.card-logo {
+  display: flex;
+
+  justify-content: center;
+
+  margin-bottom: 15px;
+}
+
+.card-logo img {
+  width: 70px;
+}
+
+.login-card h2 {
+  text-align: center;
+
+  font-size: 30px;
+
+  font-weight: 750;
+}
+
+.login-card > p {
+  text-align: center;
+
+  margin-top: 10px;
+
+  color: #aaaabd;
+
+  font-size: 15px;
+}
+
+/* =========================
+   TOGGLE
+========================= */
+
+.toggle-box {
+  margin-top: 30px;
+  padding: 5px;
+  display: flex;
+  background: #111122;
+  border-radius: 14px;
+}
+.toggle-box a {
+  width: 50%;
+  padding: 12px;
+  text-align: center;
+  text-decoration: none;
+  color: #aaa;
+  border-radius: 10px;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+.toggle-box a.active {
+  background: #7868ff;
+  color: #fff;
+}
+.toggle-box button {
+  width: 50%;
+
+  padding: 12px;
+
+  border: 0;
+
+  background: transparent;
+
+  color: #aaa;
+
+  border-radius: 10px;
+
+  font-size: 15px;
+
+  cursor: pointer;
+}
+
+.toggle-box .active {
+  background: #7868ff;
+
+  color: white;
+}
+
+/* =========================
+   INPUTS
+========================= */
+
+.input-group {
+  margin-top: 22px;
+}
+
+.input-group label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  font-size: 14px;
+
+  color: #ddd;
+}
+
+.input-box {
+  height: 52px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 0 16px;
+
+  border-radius: 14px;
+
+  background: #101020;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  color: #aaa;
+}
+
+.input-box input {
+  flex: 1;
+
+  background: none;
+
+  border: none;
+
+  outline: none;
+
+  color: white;
+
+  font-size: 15px;
+}
+
+.input-box input::placeholder {
+  color: #777;
+}
+
+.eye-btn {
+  background: none;
+
+  border: none;
+
+  color: #aaa;
+
+  cursor: pointer;
+}
+
+.forgot-password {
+  text-align: right;
+
+  margin-top: 14px;
+}
+
+.forgot-password button {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: #968aff;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.login-btn {
+  margin-top: 25px;
+
+  width: 100%;
+
+  height: 54px;
+
+  border: none;
+
+  border-radius: 14px;
+
+  background: linear-gradient(90deg, #7868ff, #9b8cff);
+
+  color: white;
+
+  font-size: 16px;
+
+  font-weight: 600;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 10px;
+
+  cursor: pointer;
+}
+
+.divider {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin: 28px 0;
+
+  color: #777;
+
+  font-size: 13px;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+
+  height: 1px;
+
+  background: #333;
+
+  flex: 1;
+}
+
+.github-btn {
+  width: 100%;
+
+  height: 52px;
+
+  border-radius: 14px;
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  background: #111120;
+
+  color: white;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  cursor: pointer;
+}
+
+.github-btn:hover {
+  background: #18182c;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1100px) {
+  .login-container {
+    padding: 0 30px;
+  }
+
+  .left-section {
+    display: none;
+    margin-left: 200px;
+  }
+
+  .right-section {
+    width: 100%;
+
+    justify-content: center;
+  }
+}

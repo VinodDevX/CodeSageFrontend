@@ -1,0 +1,146 @@
+.footer {
+  width: 100%;
+  background: #050505;
+  padding: 90px 30px 35px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-container {
+  max-width: 1450px;
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 120px;
+}
+
+/* Left */
+
+.footer-left {
+  font-family: "Inter", sans-serif;
+
+  width: 330px;
+}
+
+.footer-left p {
+  color: #8d8d8d;
+  font-size: 17px;
+  line-height: 30px;
+  margin-bottom: 35px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 20px;
+}
+
+.social-icons a {
+  color: #ffffff;
+  transition: 0.3s;
+}
+
+.social-icons svg {
+  font-size: 28px;
+}
+
+.social-icons a:hover {
+  color: #7b61ff;
+}
+
+/* Right */
+
+.footer-links {
+  flex: 1;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-column h4 {
+  font-family: "Inter", sans-serif;
+
+  color: #ffffff;
+  font-size: 22px;
+  margin-bottom: 28px;
+  font-weight: 600;
+}
+
+.footer-column a {
+  color: #9b9b9b;
+  text-decoration: none;
+  margin-bottom: 18px;
+  font-size: 17px;
+  transition: 0.3s;
+}
+
+.footer-column a:hover {
+  color: white;
+}
+
+/* Bottom */
+
+.footer-bottom {
+  margin-top: 70px;
+  padding-top: 28px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+
+  text-align: center;
+
+  color: #888;
+  font-family: "Inter", sans-serif;
+
+  font-size: 15px;
+}
+
+/* Responsive */
+
+@media (max-width: 1000px) {
+  .footer-container {
+    flex-direction: column;
+  }
+
+  .footer-links {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 50px;
+  }
+}
+.footer-logo-img {
+  height: 100px;
+  object-fit: contain;
+}
+@media (max-width: 768px) {
+  .footer {
+    padding: 70px 20px 30px;
+  }
+
+  .footer-links {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-left {
+    width: 100%;
+  }
+
+  .footer-left p {
+    font-size: 16px;
+  }
+}
+
+/* @media (max-width: 500px) {
+  .footer-links {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-column h4 {
+    margin-bottom: 18px;
+  }
+} */

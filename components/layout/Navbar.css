@@ -1,0 +1,144 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.navbar {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(5, 5, 5, 0.9);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  z-index: 1000;
+}
+
+.container {
+  width: 170vh;
+  max-width: 1800px;
+  height: 80px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo */
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: white;
+  font-size: 24px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.logo span span {
+  color: #8b5cf6;
+}
+
+.logo-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* Navigation */
+
+.nav-links {
+  display: flex;
+  gap: 50px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #bdbdbd;
+  font-size: 15px;
+  font-weight: 500;
+  transition: 0.3s;
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: #d6d6d6;
+  letter-spacing: -0.2px;
+  display: flex;
+}
+
+.nav-links a:hover {
+  color: white;
+}
+
+.nav-btns {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.login {
+  text-decoration: none;
+  color: #d6d6d6;
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.2px;
+}
+
+.login:hover {
+  color: white;
+}
+
+.signup {
+  text-decoration: none;
+  padding: 12px 24px;
+  color: #d6d6d6;
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.2px;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #7c3aed, #4f46e5, #2563eb);
+  transition: 0.3s;
+  box-shadow: 0 0 20px rgba(124, 58, 237, 0.4);
+}
+
+.signup:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 28px rgba(124, 58, 237, 0.6);
+}
+
+/* Responsive */
+
+@media (max-width: 992px) {
+  .nav-links {
+    display: none;
+  }
+
+  .container {
+    width: 95%;
+  }
+}
+
+@media (max-width: 600px) {
+  .login {
+    display: none;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+
+  .signup {
+    padding: 10px 18px;
+    font-size: 14px;
+  }
+}

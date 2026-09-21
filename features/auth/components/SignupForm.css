@@ -1,0 +1,170 @@
+/* ==========================================
+   SIGN UP
+========================================== */
+
+.name-row {
+  display: flex;
+  gap: 16px;
+  margin-top: 22px;
+}
+
+.name-row .input-group {
+  flex: 1;
+  margin-top: 0;
+}
+
+.name-row .input-box {
+  width: 100%;
+}
+
+.name-row input {
+  width: 100%;
+}
+
+/* Slightly taller card for signup */
+.login-card {
+  transition: all 0.3s ease;
+}
+
+/* Input spacing */
+.input-group {
+  margin-top: 18px;
+}
+
+/* Input Box */
+.input-box {
+  height: 56px;
+  padding: 0 18px;
+  border-radius: 14px;
+  background: rgba(18, 18, 35, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.25s ease;
+}
+
+.input-box:hover {
+  border-color: rgba(140, 108, 255, 0.4);
+}
+
+.input-box:focus-within {
+  border-color: #7c5cff;
+  box-shadow: 0 0 0 3px rgba(124, 92, 255, 0.15);
+}
+
+.input-box svg {
+  color: #9b9bb7;
+}
+
+.input-box input {
+  color: #fff;
+  font-size: 15px;
+}
+
+.input-box input::placeholder {
+  color: #8a8aa6;
+}
+
+/* Password eye button */
+.eye-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9b9bb7;
+  transition: 0.25s;
+}
+
+.eye-btn:hover {
+  color: #fff;
+}
+
+/* Create Account Button */
+.login-btn {
+  margin-top: 26px;
+  height: 56px;
+  border-radius: 14px;
+  background: linear-gradient(90deg, #7b2cff 0%, #1da1ff 100%);
+  transition: all 0.3s ease;
+}
+
+.login-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(91, 81, 255, 0.35);
+}
+
+/* Github Button */
+.github-btn {
+  height: 56px;
+  transition: all 0.25s ease;
+}
+
+.github-btn:hover {
+  border-color: rgba(124, 92, 255, 0.5);
+}
+
+/* Toggle */
+.toggle-box {
+  margin-top: 30px;
+  padding: 5px;
+  display: flex;
+  background: #111122;
+  border-radius: 14px;
+}
+.toggle-box a {
+  width: 50%;
+  padding: 12px;
+  text-align: center;
+  text-decoration: none;
+  color: #aaa;
+  border-radius: 10px;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+.toggle-box a.active {
+  background: #7868ff;
+  color: #fff;
+}
+.toggle-box button {
+  width: 50%;
+
+  padding: 12px;
+
+  border: 0;
+
+  background: transparent;
+
+  color: #aaa;
+
+  border-radius: 10px;
+
+  font-size: 15px;
+
+  cursor: pointer;
+}
+
+.toggle-box .active {
+  background: #7868ff;
+
+  color: white;
+}
+
+/* Better spacing when signup opens */
+form {
+  margin-top: 8px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .login-card {
+    width: 100%;
+    padding: 28px;
+  }
+
+  .name-row {
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .name-row .input-group {
+    width: 100%;
+  }
+}

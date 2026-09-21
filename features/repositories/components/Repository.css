@@ -1,0 +1,784 @@
+/* =========================================================
+   REPOSITORY PAGE
+========================================================= */
+.repository-main {
+  position: relative;
+  overflow-y: auto;
+}
+/* =========================================================
+   TOP BAR
+========================================================= */
+.repository-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.repository-eyebrow {
+  margin: 0;
+  color: #9b6cff;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  padding-top: 52px;
+}
+.repository-topbar span {
+  color: #9ca3af;
+  font-size: 14px;
+}
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+.repository-empty-state {
+  min-height: calc(100vh - 145px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-bottom: 70px;
+}
+
+/* =========================================================
+   ILLUSTRATION
+========================================================= */
+
+.repository-illustration {
+  position: relative;
+
+  width: 145px;
+  height: 145px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 26px;
+}
+
+.repository-glow {
+  position: absolute;
+
+  width: 120px;
+  height: 120px;
+
+  border-radius: 50%;
+
+  background: rgba(139, 92, 246, 0.16);
+
+  filter: blur(30px);
+}
+
+.repository-code-icon {
+  position: relative;
+  z-index: 2;
+
+  width: 76px;
+  height: 76px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(139, 92, 246, 0.4);
+
+  border-radius: 20px;
+
+  background: rgba(139, 92, 246, 0.08);
+
+  box-shadow:
+    0 0 30px rgba(139, 92, 246, 0.16),
+    inset 0 0 20px rgba(139, 92, 246, 0.08);
+}
+
+.repository-code-icon span {
+  font-size: 26px;
+  font-weight: 700;
+  color: #c4b5fd;
+}
+
+.spark {
+  position: absolute;
+  color: #a78bfa;
+  font-size: 14px;
+}
+
+.spark-one {
+  top: 10px;
+  right: 25px;
+}
+
+.spark-two {
+  bottom: 20px;
+  left: 10px;
+}
+
+.spark-three {
+  top: 45px;
+  left: 0;
+}
+
+/* =========================================================
+   EMPTY STATE TEXT
+========================================================= */
+
+.repository-empty-state h2 {
+  margin: 0 0 12px;
+
+  font-size: 28px;
+  font-weight: 700;
+
+  color: #f9fafb;
+}
+
+.repository-empty-state h2 span {
+  color: #a78bfa;
+}
+
+.repository-empty-state > p {
+  margin: 0 0 27px;
+
+  color: #8f96a3;
+
+  font-size: 14px;
+
+  line-height: 1.7;
+}
+
+/* =========================================================
+   MAIN IMPORT BUTTON
+========================================================= */
+
+.import-repository-button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  border: none;
+  border-radius: 9px;
+
+  padding: 12px 17px;
+
+  color: white;
+
+  background: linear-gradient(135deg, #8b5cf6, #6366f1);
+
+  cursor: pointer;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.import-repository-button:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 14px 35px rgba(99, 102, 241, 0.3);
+}
+
+/* =========================================================
+   SECURITY
+========================================================= */
+
+.repository-security {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  margin-top: 20px;
+
+  color: #717887;
+
+  font-size: 12px;
+}
+
+.repository-security div {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* =========================================================
+   IMPORTED REPOSITORIES
+========================================================= */
+
+.imported-repositories-container {
+  width: 100%;
+  max-width: 1200px;
+
+  margin: 10px auto 0;
+}
+
+/* =========================================================
+   IMPORTED HEADER
+========================================================= */
+
+.imported-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  gap: 30px;
+
+  margin-bottom: 28px;
+}
+
+.imported-header h2 {
+  margin: 0 0 7px;
+
+  font-size: 25px;
+  color: #f8fafc;
+}
+
+.imported-header span {
+  color: #858c99;
+  font-size: 13px;
+}
+
+.add-repository-button {
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 10px 14px;
+
+  border: 1px solid rgba(139, 92, 246, 0.35);
+
+  border-radius: 8px;
+
+  background: rgba(139, 92, 246, 0.08);
+
+  color: #c4b5fd;
+
+  cursor: pointer;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  transition: 0.2s ease;
+}
+
+.add-repository-button:hover {
+  background: rgba(139, 92, 246, 0.15);
+  border-color: rgba(139, 92, 246, 0.55);
+}
+
+/* =========================================================
+   REPOSITORY LIST
+========================================================= */
+
+.repository-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* =========================================================
+   REPOSITORY ROW
+========================================================= */
+
+.repository-row {
+  display: grid;
+
+  grid-template-columns:
+    minmax(190px, 1.3fr)
+    minmax(250px, 1fr)
+    auto;
+
+  align-items: center;
+
+  gap: 20px;
+
+  padding: 17px 18px;
+
+  border: 1px solid rgba(255, 255, 255, 0.07);
+
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.025);
+
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.repository-row:hover {
+  border-color: rgba(139, 92, 246, 0.25);
+
+  background: rgba(139, 92, 246, 0.035);
+}
+
+/* =========================================================
+   REPOSITORY POINT
+========================================================= */
+
+.repository-point {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  min-width: 0;
+}
+
+.repository-bullet {
+  color: #a78bfa;
+
+  font-size: 22px;
+
+  line-height: 1;
+}
+
+.repository-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  min-width: 0;
+}
+
+.repository-info strong {
+  color: #f3f4f6;
+  margin-top: 15px;
+  font-size: 14px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.repository-info span {
+  color: #707887;
+
+  font-size: 11px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* =========================================================
+   REPOSITORY META
+========================================================= */
+
+.repository-meta {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.repository-meta span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  color: #858c99;
+
+  font-size: 11px;
+
+  white-space: nowrap;
+}
+
+/* =========================================================
+   ACTION BUTTONS
+========================================================= */
+
+.repository-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: 6px;
+}
+
+.repository-action-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+
+  padding: 7px 9px;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  border-radius: 7px;
+
+  background: rgba(255, 255, 255, 0.035);
+
+  color: #aeb4bf;
+
+  cursor: pointer;
+
+  font-size: 10px;
+  font-weight: 500;
+
+  transition: 0.2s ease;
+}
+
+.repository-action-button:hover {
+  color: #ddd6fe;
+
+  border-color: rgba(139, 92, 246, 0.35);
+
+  background: rgba(139, 92, 246, 0.1);
+}
+
+.repository-action-button.delete-action:hover {
+  color: #fca5a5;
+
+  border-color: rgba(239, 68, 68, 0.35);
+
+  background: rgba(239, 68, 68, 0.08);
+}
+
+/* =========================================================
+   MODAL OVERLAY
+========================================================= */
+
+.repository-modal-overlay {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 9999;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 25px;
+
+  background: rgba(0, 0, 0, 0.7);
+
+  backdrop-filter: blur(7px);
+}
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.repository-modal {
+  width: 100%;
+  max-width: 850px;
+
+  max-height: 80vh;
+
+  overflow-y: auto;
+
+  border: 1px solid rgba(139, 92, 246, 0.2);
+
+  border-radius: 16px;
+
+  background: linear-gradient(
+    145deg,
+    rgba(25, 25, 35, 0.98),
+    rgba(13, 13, 20, 0.98)
+  );
+
+  box-shadow:
+    0 30px 100px rgba(0, 0, 0, 0.6),
+    0 0 50px rgba(139, 92, 246, 0.08);
+}
+
+/* =========================================================
+   MODAL HEADER
+========================================================= */
+
+.repository-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  padding: 24px 25px 20px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.repository-modal-header h2 {
+  margin: 0 0 6px;
+
+  color: #f9fafb;
+
+  font-size: 21px;
+}
+
+.repository-modal-header span {
+  color: #7f8794;
+
+  font-size: 12px;
+}
+
+.modal-close-button {
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  border-radius: 7px;
+
+  background: rgba(255, 255, 255, 0.04);
+
+  color: #8d95a2;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.modal-close-button:hover {
+  color: #fff;
+
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* =========================================================
+   MODAL REPOSITORY LIST
+========================================================= */
+
+.modal-repository-list {
+  display: flex;
+  flex-direction: column;
+
+  padding: 10px 18px 15px;
+}
+
+.modal-repository-item {
+  display: grid;
+
+  grid-template-columns:
+    minmax(220px, 1.5fr) minmax(130px, 0.6fr)
+    auto;
+
+  align-items: center;
+
+  gap: 20px;
+
+  padding: 16px 8px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.modal-repository-item:last-child {
+  border-bottom: none;
+}
+
+/* =========================================================
+   MODAL REPOSITORY INFO
+========================================================= */
+
+.modal-repository-info {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  min-width: 0;
+}
+
+.modal-repository-icon {
+  width: 38px;
+  height: 38px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(139, 92, 246, 0.25);
+
+  border-radius: 9px;
+
+  background: rgba(139, 92, 246, 0.08);
+
+  color: #c4b5fd;
+}
+
+.modal-repository-info > div:last-child {
+  display: flex;
+  flex-direction: column;
+
+  gap: 5px;
+
+  min-width: 0;
+}
+
+.modal-repository-info strong {
+  color: #f3f4f6;
+
+  font-size: 13px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.modal-repository-info span {
+  color: #707887;
+
+  font-size: 11px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* =========================================================
+   MODAL DETAILS
+========================================================= */
+
+.modal-repository-details {
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+}
+
+.modal-repository-details span {
+  padding: 5px 8px;
+
+  border: 1px solid rgba(255, 255, 255, 0.06);
+
+  border-radius: 5px;
+
+  color: #8c94a1;
+
+  background: rgba(255, 255, 255, 0.025);
+
+  font-size: 10px;
+}
+
+/* =========================================================
+   INDIVIDUAL IMPORT BUTTON
+========================================================= */
+
+.modal-import-button {
+  display: inline-flex;
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 6px;
+
+  min-width: 82px;
+
+  padding: 8px 12px;
+
+  border: 1px solid rgba(139, 92, 246, 0.3);
+
+  border-radius: 7px;
+
+  background: rgba(139, 92, 246, 0.1);
+
+  color: #c4b5fd;
+
+  cursor: pointer;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  transition: 0.2s ease;
+}
+
+.modal-import-button:hover {
+  background: rgba(139, 92, 246, 0.2);
+
+  border-color: rgba(139, 92, 246, 0.5);
+
+  transform: translateY(-1px);
+}
+
+/* =========================================================
+   MODAL FOOTER
+========================================================= */
+
+.repository-modal-footer {
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+
+  padding: 14px 25px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+
+  color: #656d7a;
+
+  font-size: 10px;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1100px) {
+  .repository-row {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .repository-meta {
+    justify-content: flex-start;
+  }
+
+  .repository-actions {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 800px) {
+  .modal-repository-item {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .modal-repository-details {
+    flex-wrap: wrap;
+  }
+
+  .modal-import-button {
+    width: fit-content;
+  }
+
+  .imported-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 600px) {
+  .repository-modal-overlay {
+    padding: 12px;
+  }
+
+  .repository-modal-header {
+    padding: 20px;
+  }
+
+  .modal-repository-list {
+    padding: 8px 15px;
+  }
+
+  .repository-empty-state h2 {
+    font-size: 23px;
+  }
+
+  .repository-empty-state > p {
+    font-size: 12px;
+  }
+
+  .repository-meta {
+    flex-wrap: wrap;
+  }
+}

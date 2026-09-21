@@ -1,0 +1,331 @@
+.integration-section {
+  width: 100%;
+  background: #050505;
+  padding: 110px 30px;
+}
+
+.integration-container {
+  width: 100%;
+  max-width: 1450px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* ==========================
+      Heading
+========================== */
+
+.integration-container h2 {
+  font-size: 52px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 14px;
+  letter-spacing: -1px;
+  font-family: "Inter", sans-serif;
+}
+
+.subtitle {
+  font-size: 20px;
+  color: #9a9a9a;
+  margin-bottom: 70px;
+  font-family: "Inter", sans-serif;
+}
+
+/* ==========================
+      Integrations
+========================== */
+
+.integration-grid {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 25px;
+  flex-wrap: wrap;
+  margin-bottom: 90px;
+}
+
+.integration-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.35s ease;
+  font-family: "Inter", sans-serif;
+}
+
+.integration-card:hover {
+  transform: translateY(-8px);
+}
+
+.logo-box {
+  width: 72px;
+  height: 72px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 16px;
+}
+
+.logo-box img {
+  width: 100px;
+  height: 88px;
+  object-fit: contain;
+}
+
+.integration-card span {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* ==========================
+      CTA Section
+========================== */
+
+.cta-box {
+  position: relative;
+  width: 100%;
+  min-height: 310px;
+
+  border-radius: 26px;
+
+  padding: 2px;
+  font-family: "Inter", sans-serif;
+
+  background: linear-gradient(90deg, #7c3aed, #4f46e5, #2563eb);
+
+  overflow: hidden;
+
+  box-shadow: 0 0 40px rgba(115, 0, 255, 0.25);
+}
+
+/* Border Glow */
+
+.cta-box::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      circle at 18% 35%,
+      rgba(147, 51, 234, 0.18),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 82% 70%,
+      rgba(59, 130, 246, 0.18),
+      transparent 30%
+    );
+
+  pointer-events: none;
+}
+
+.cta-content {
+  position: relative;
+
+  width: 100%;
+  min-height: 306px;
+
+  border-radius: 24px;
+
+  background: #090811;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 70px 20px;
+
+  overflow: hidden;
+}
+
+/* Background Glow */
+
+.cta-content::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      circle at 15% 30%,
+      rgba(130, 0, 255, 0.18),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 80% 65%,
+      rgba(73, 89, 255, 0.18),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 60% 20%,
+      rgba(150, 70, 255, 0.12),
+      transparent 18%
+    );
+}
+
+/* ==========================
+      CTA Text
+========================== */
+
+.cta-content h3 {
+  position: relative;
+
+  color: #ffffff;
+
+  font-size: 52px;
+
+  font-weight: 700;
+
+  margin-bottom: 20px;
+
+  z-index: 2;
+}
+
+.cta-content p {
+  position: relative;
+
+  color: #b6b6b6;
+
+  font-size: 20px;
+
+  line-height: 34px;
+
+  text-align: center;
+
+  margin-bottom: 40px;
+
+  z-index: 2;
+}
+
+/* ==========================
+      Button
+========================== */
+
+.cta-btn {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  border: none;
+
+  cursor: pointer;
+
+  color: white;
+
+  font-size: 18px;
+
+  font-weight: 600;
+
+  padding: 18px 42px;
+
+  border-radius: 12px;
+
+  background: linear-gradient(90deg, #8b3dff, #4d8dff);
+
+  transition: all 0.3s ease;
+
+  z-index: 2;
+}
+
+.cta-btn:hover {
+  transform: translateY(-4px);
+
+  box-shadow: 0 15px 35px rgba(110, 45, 255, 0.45);
+}
+
+/* ==========================
+      Responsive
+========================== */
+
+@media (max-width: 1200px) {
+  .integration-grid {
+    justify-content: center;
+    gap: 50px;
+  }
+}
+
+@media (max-width: 992px) {
+  .integration-container h2 {
+    font-size: 42px;
+  }
+
+  .cta-content h3 {
+    font-size: 40px;
+  }
+
+  .cta-content p {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .integration-section {
+    padding: 80px 20px;
+  }
+
+  .integration-container h2 {
+    font-size: 34px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+  }
+
+  .integration-grid {
+    justify-content: center;
+    gap: 35px;
+  }
+
+  .cta-box {
+    min-height: auto;
+  }
+
+  .cta-content {
+    padding: 60px 20px;
+  }
+
+  .cta-content h3 {
+    font-size: 30px;
+    line-height: 42px;
+  }
+
+  .cta-content p {
+    font-size: 16px;
+    line-height: 28px;
+  }
+
+  .cta-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .integration-grid {
+    gap: 28px;
+  }
+
+  .logo-box {
+    width: 60px;
+    height: 60px;
+  }
+
+  .logo-box img {
+    width: 38px;
+    height: 38px;
+  }
+
+  .cta-content h3 {
+    font-size: 26px;
+  }
+}

@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "title": "Dashboard",
+    "icon": "LayoutDashboard",
+    "active": true
+  },
+  {
+    "id": 2,
+    "title": "Repositories",
+    "icon": "FolderGit2",
+    "active": false
+  },
+  {
+    "id": 3,
+    "title": "AI Reviews",
+    "icon": "Bot",
+    "active": false
+  },
+  {
+    "id": 4,
+    "title": "Reports",
+    "icon": "FileText",
+    "active": false
+  },
+  {
+    "id": 5,
+    "title": "Security",
+    "icon": "Shield",
+    "active": false
+  },
+  {
+    "id": 6,
+    "title": "Team",
+    "icon": "Users",
+    "active": false
+  },
+  {
+    "id": 7,
+    "title": "Settings",
+    "icon": "Settings",
+    "active": false
+  }
+]
