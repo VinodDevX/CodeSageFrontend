@@ -22,10 +22,9 @@ import {
 import { FaGithub } from "react-icons/fa";
 import { signupUser } from "@/app/redux/slices/authslice";
 import type { AppDispatch } from "@/app/redux/store";
-import BASE_URL from "@/lib/api/baseUrl";
 
 export default function Login() {
-  const router = useRouter();
+const router = useRouter();
 
   const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch<AppDispatch>();
@@ -38,7 +37,7 @@ export default function Login() {
     confirmPassword: "",
   });
 
-  const registerUser = async () => {
+  const registerUser = () => {
     if (postData.password !== postData.confirmPassword) {
       alert("Passwords do not match");
       return;
@@ -49,12 +48,9 @@ export default function Login() {
       email: postData.email,
       password: postData.password,
     };
-    try {
-      await dispatch(signupUser(signupData)).unwrap();
-      router.push("/login");
-    } catch {
-      return;
-    }
+    dispatch(signupUser(signupData));
+    router.push("/login");
+
 
     // Form clear
     setPostData({
@@ -69,9 +65,7 @@ export default function Login() {
     setShowPassword(false);
   };
 
-  const handleGithubLogin = () => {
-    window.location.assign(`${BASE_URL}/api/auth/login-with-github`);
-  };
+
 
   return (
     <div className="login-page">
@@ -268,11 +262,7 @@ export default function Login() {
                 <span>or continue with GitHub</span>
               </div>
 
-              <button
-                onClick={handleGithubLogin}
-                type="button"
-                className="github-btn"
-              >
+              <button type="button" className="github-btn">
                 <FaGithub size={28} />
               </button>
             </form>

@@ -4,6 +4,10 @@ import {
   type PayloadAction,
 } from "@reduxjs/toolkit";
 import BASE_URL from "@/lib/api/baseUrl";
+import {
+  persistAccessToken,
+  persistRefreshToken,
+} from "@/lib/auth/tokenStorage";
 import type {
   AuthUser,
   AuthState,
@@ -48,29 +52,17 @@ export const loginUser = createAsyncThunk<LoginPayload, LoginRequest>(
     }
 
     const data = await response.json();
-
-    console.log("LOGIN RESPONSE:", data);
-
-    // Backend se accessToken nikalna
     const accessToken = data.data?.accessToken;
-
     const refreshToken = data.data?.refreshToken;
 
-    // Token localStorage me save karo
-    if (typeof window !== "undefined") {
-      if (accessToken) {
-        localStorage.setItem(
-          "accessToken",
-          accessToken
-        );
-      }
+    if (!accessToken) {
+      throw new Error("Login failed");
+    }
 
-      if (refreshToken) {
-        localStorage.setItem(
-          "refreshToken",
-          refreshToken
-        );
-      }
+    persistAccessToken(accessToken);
+
+    if (refreshToken) {
+      persistRefreshToken(refreshToken);
     }
 
     return {
@@ -105,23 +97,7 @@ export const getCurrentUser = createAsyncThunk<AuthUser, string>(
 );
 
 
-export const githubLogin = createAsyncThunk<LoginPayload, string>(
-  "auth/githubLogin",
-  async (code) => {
-    const loginUrl = new URL(`${BASE_URL}/api/auth/login-with-github`);
-    loginUrl.searchParams.set("code", code);
 
-    const response = await fetch(loginUrl, {
-      method: "GET",
-    });
-
-    if (!response.ok) {
-      throw new Error("GitHub login failed");
-    }
-
-    return response.json();
-  }
-);
 
 const initialState: AuthState = {
   user: null,
@@ -139,7 +115,7 @@ const authSlice = createSlice({
     login: (state, action: PayloadAction<LoginPayload>) => {
       state.user = action.payload.user;
       state.token = action.payload.token;
-      state.isAuthenticated = true;
+      state.isAuthenticated = Boolean(action.payload.token);
       state.isLoading = false;
     },
     setInitialized: (state, action: PayloadAction<boolean>) => {
@@ -168,7 +144,7 @@ const authSlice = createSlice({
       .addCase(signupUser.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.token = action.payload.token;
-        state.isAuthenticated = true;
+        state.isAuthenticated = Boolean(action.payload.token);
         state.isLoading = false;
       })
       .addCase(signupUser.rejected, (state, action) => {
@@ -182,7 +158,7 @@ const authSlice = createSlice({
       .addCase(loginUser.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.token = action.payload.token;
-        state.isAuthenticated = true;
+        state.isAuthenticated = Boolean(action.payload.token);
         state.isLoading = false;
       })
       .addCase(loginUser.rejected, (state, action) => {
@@ -195,7 +171,7 @@ const authSlice = createSlice({
       })
       .addCase(getCurrentUser.fulfilled, (state, action) => {
         state.user = action.payload;
-        state.isAuthenticated = true;
+        state.isAuthenticated = Boolean(state.token);
         state.isLoading = false;
       })
       .addCase(getCurrentUser.rejected, (state, action) => {
@@ -204,21 +180,7 @@ const authSlice = createSlice({
         state.isAuthenticated = false;
         state.isLoading = false;
         state.error = action.error.message ?? "Unable to get current user";
-      })
-      .addCase(githubLogin.pending, (state) => {
-        state.isLoading = true;
-        state.error = null;
-      })
-      .addCase(githubLogin.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-        state.token = action.payload.token;
-        state.isAuthenticated = true;
-        state.isLoading = false;
-      })
-      .addCase(githubLogin.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.error.message ?? "GitHub login failed";
-      })
+      });
   },
 });
 

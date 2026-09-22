@@ -5,17 +5,11 @@ import "./Repository.css";
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import AppSidebar from "@/components/layout/AppSidebar";
+import AppHeader from "@/components/layout/AppHeader";
 
 import {
-  Home,
-  FolderGit2,
-  Bot,
-  GitPullRequest,
   CircleAlert,
-  BarChart3,
-  Settings,
-  ChevronRight,
-  Sparkles,
   LockKeyhole,
   ArrowRight,
   X,
@@ -23,7 +17,6 @@ import {
   Clock3,
   Code2,
   Trash2,
-  Eye,
   FileSearch,
   Lightbulb,
 } from "lucide-react";
@@ -70,100 +63,14 @@ export default function Repository() {
 
   return (
     <main className="codesage-page">
-      {/* ================= SIDEBAR ================= */}
-
-      <aside className="sidebar">
-        {/* LOGO */}
-
-        <div className="brand">
-          <div className="Brand-logo" style={{ height: "86px" }}>
-            <img
-              src="/mainlogo.png.png"
-              alt="CodeSage AI"
-              style={{ width: "171px", height: "110px" }}
-            />
-          </div>
-        </div>
-
-        {/* NAVIGATION */}
-
-        <nav className="sidebar-nav">
-          <SidebarItem
-            icon={<Home size={19} />}
-            label="Dashboard"
-            onClick={() => router.push("/dashboard")}
-          />
-
-          <SidebarItem
-            icon={<FolderGit2 size={19} />}
-            label="Repositories"
-            active
-          />
-
-          <SidebarItem icon={<Bot size={19} />} label="AI Reviews" />
-
-          <SidebarItem
-            icon={<GitPullRequest size={19} />}
-            label="Pull Requests"
-          />
-
-          <SidebarItem icon={<CircleAlert size={19} />} label="Issues" />
-
-          <SidebarItem icon={<BarChart3 size={19} />} label="Analytics" />
-
-          <SidebarItem icon={<Settings size={19} />} label="Settings" />
-        </nav>
-
-        {/* ================= UPGRADE CARD ================= */}
-
-        <div className="upgrade-card">
-          <div className="upgrade-icon">
-            <Sparkles size={19} />
-          </div>
-
-          <h3>Upgrade to Pro</h3>
-
-          <p>Unlock advanced AI models, team insights and unlimited reviews.</p>
-
-          <button className="upgrade-button">Upgrade Now</button>
-        </div>
-
-        {/* ================= WEEKLY REVIEWS ================= */}
-
-        <div className="weekly-reviews">
-          <div className="weekly-header">
-            <div className="weekly-icon">
-              <Sparkles size={15} />
-            </div>
-
-            <span>Weekly Reviews</span>
-
-            <strong>12 / 20</strong>
-          </div>
-
-          <div className="progress-track">
-            <div className="progress-fill" />
-          </div>
-        </div>
-
-        {/* ================= USER ================= */}
-
-        <div className="user-profile">
-          <div className="avatar">DJ</div>
-
-          {/* <div className="user-info">
-            <strong>Deshna  guub</strong>
-
-            <span>Frontend Developer</span>
-          </div> */}
-
-          <ChevronRight size={18} />
-        </div>
-      </aside>
+      <AppSidebar active="repositories" />
 
       {/* ================= MAIN CONTENT ================= */}
 
-      <section className="main-content eymain">
+      <section className="main-content">
+        <AppHeader />
+
+        <div className="repository-main">
         {/* PAGE HEADER */}
 
         <div className="repository-topbar">
@@ -248,7 +155,15 @@ export default function Repository() {
                       <span>Issues</span>
                     </button>
 
-                    <button type="button" className="repository-action-button">
+                    <button
+                      type="button"
+                      className="repository-action-button"
+                      onClick={() =>
+                        router.push(
+                          `/ai-reviews?repo=${encodeURIComponent(repo.name)}`,
+                        )
+                      }
+                    >
                       <FileSearch size={15} />
                       <span>Reviews</span>
                     </button>
@@ -336,6 +251,7 @@ export default function Repository() {
             </div>
           </div>
         )}
+        </div>
       </section>
 
       {/* =====================================================
@@ -426,34 +342,6 @@ export default function Repository() {
         </div>
       )}
     </main>
-  );
-}
-
-/* =========================================================
-   SIDEBAR ITEM
-========================================================= */
-
-function SidebarItem({
-  icon,
-  label,
-  active = false,
-  onClick,
-}: {
-  icon: React.ReactNode;
-  label: string;
-  active?: boolean;
-  onClick?: () => void;
-}) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      className={`sidebar-item ${active ? "active" : ""}`}
-    >
-      {icon}
-
-      <span>{label}</span>
-    </button>
   );
 }
 

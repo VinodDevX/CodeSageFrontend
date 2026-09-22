@@ -20,7 +20,6 @@ import { FaGithub } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { loginUser } from "@/app/redux/slices/authslice";
 import type { AppDispatch } from "@/app/redux/store";
-import BASE_URL from "@/lib/api/baseUrl";
 
 export default function Login() {
 
@@ -43,11 +42,6 @@ const router = useRouter();
       // The rejected thunk stores the API error in the auth state.
     }
   };
-
-
-    const handleGithubLogin = () => {
-      window.location.assign(`${BASE_URL}/api/auth/login-with-github`);
-    };
 
   return (
     <div className="login-page">
@@ -193,7 +187,7 @@ const router = useRouter();
                 <span>or continue with GitHub</span>
               </div>
 
-              <button onClick={handleGithubLogin} type="button" className="github-btn">
+              <button type="button" className="github-btn">
                 <FaGithub size={28} />
               </button>
             </form>

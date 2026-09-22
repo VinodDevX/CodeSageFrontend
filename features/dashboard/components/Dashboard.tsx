@@ -1,10 +1,14 @@
 "use client";
 
 import "./Dashboard.css";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "@/app/redux/slices/authslice";
 import type { AppDispatch, RootState } from "@/app/redux/store";
+import { clearAuthStorage } from "@/lib/auth/tokenStorage";
+import UpgradeCard from "@/components/layout/UpgradeCard";
+import AppHeader from "@/components/layout/AppHeader";
 
 import {
   Home,
@@ -14,15 +18,12 @@ import {
   CircleAlert,
   BarChart3,
   Settings,
-  Search,
-  Bell,
-  HelpCircle,
-  Moon,
-  Menu,
   Upload,
   MoreHorizontal,
   Copy,
+  Download,
   Maximize2,
+  Minimize2,
   Sparkles,
   Bug,
   ShieldCheck,
@@ -37,17 +38,107 @@ import {
   Code2,
   LogOut,
 } from "lucide-react";
+
+const SAMPLE_FILE = {
+  name: "index.js",
+  language: "JS",
+  code: `import { useState, useEffect } from "react";
+import axios from "axios";
+
+export default function UserDashboard() {
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    axios.get("/api/users")
+      .then(res => {
+        setUsers(res.data);
+        setLoading(false);
+      });
+      .catch(err => console.error(err));
+  }, []);
+
+  return (
+    <div className="p-6">
+      <h2 className="text-xl font-semibold mb-4">
+        User Dashboard
+      </h2>
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <ul>
+          {users.map(user => (
+            <li key={user.id}>
+              {user.name} - {user.email}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
+`,
+};
+
 export default function Dashboard() {
   const user = useSelector((state: RootState) => state.auth.user);
   const router = useRouter();
   const dispatch = useDispatch<AppDispatch>();
+  const [isRawView, setIsRawView] = useState(false);
+  const [isMaximized, setIsMaximized] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const lineCount = SAMPLE_FILE.code.split("\n").length;
 
   const handleLogout = () => {
-    localStorage.removeItem("auth");
-    localStorage.removeItem("accessToken");
-    localStorage.removeItem("refreshToken");
+    clearAuthStorage();
     dispatch(logout());
     router.replace("/login");
+  };
+
+  useEffect(() => {
+    if (!copied) return undefined;
+
+    const timeoutId = window.setTimeout(() => setCopied(false), 1600);
+    return () => window.clearTimeout(timeoutId);
+  }, [copied]);
+
+  useEffect(() => {
+    if (!isMaximized) return undefined;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsMaximized(false);
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [isMaximized]);
+
+  const handleCopyCode = async () => {
+    try {
+      await navigator.clipboard.writeText(SAMPLE_FILE.code);
+      setCopied(true);
+    } catch {
+      setCopied(false);
+    }
+  };
+
+  const handleDownloadCode = () => {
+    const blob = new Blob([SAMPLE_FILE.code], { type: "text/javascript" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = SAMPLE_FILE.name;
+    link.click();
+    URL.revokeObjectURL(url);
   };
 
   return (
@@ -73,32 +164,34 @@ export default function Dashboard() {
             onClick={() => router.push("/repositories")}
           />
 
-          <SidebarItem icon={<Bot size={19} />} label="AI Reviews" />
+          <SidebarItem icon={<Bot size={19} />} label="AI Reviews" onClick={() => router.push("/ai-reviews")}/>
 
           <SidebarItem
             icon={<GitPullRequest size={19} />}
             label="Pull Requests"
+            onClick={() => router.push("/pull-requests")}
           />
 
-          <SidebarItem icon={<CircleAlert size={19} />} label="Issues" />
+          <SidebarItem
+            icon={<CircleAlert size={19} />}
+            label="Issues"
+            onClick={() => router.push("/issues")}
+          />
 
-          <SidebarItem icon={<BarChart3 size={19} />} label="Analytics" />
+          <SidebarItem
+            icon={<BarChart3 size={19} />}
+            label="Analytics"
+            onClick={() => router.push("/analytics")}
+          />
 
-          <SidebarItem icon={<Settings size={19} />} label="Settings" />
+          <SidebarItem
+            icon={<Settings size={19} />}
+            label="Settings"
+            onClick={() => router.push("/settings")}
+          />
         </nav>
 
-        {/* Upgrade Card */}
-        <div className="upgrade-card">
-          <div className="upgrade-icon">
-            <Sparkles size={19} />
-          </div>
-
-          <h3>Upgrade to Pro</h3>
-
-          <p>Unlock advanced AI models, team insights and unlimited reviews.</p>
-
-          <button className="upgrade-button">Upgrade Now</button>
-        </div>
+        <UpgradeCard />
 
         {/* Weekly Reviews */}
         <div className="weekly-reviews">
@@ -135,43 +228,7 @@ export default function Dashboard() {
 
       {/* ================= MAIN CONTENT ================= */}
       <section className="main-content">
-        {/* TOP BAR */}
-        <header className="topbar">
-          <button className="menu-button">
-            <Menu size={21} />
-          </button>
-
-          <div className="search-box">
-            <Search size={18} />
-
-            <input
-              type="text"
-              placeholder="Search repositories, files, reviews..."
-            />
-
-            <span className="search-shortcut">⌘ K</span>
-          </div>
-
-          <div className="top-actions">
-            <button className="top-icon">
-              <Bell size={20} />
-              <span className="notification-dot" />
-            </button>
-
-            <button className="top-icon">
-              <HelpCircle size={20} />
-            </button>
-
-            <button className="top-icon">
-              <Moon size={20} />
-            </button>
-
-            <div className="top-avatar">
-              DJ
-              <span />
-            </div>
-          </div>
-        </header>
+        <AppHeader />
 
         {/* CONTENT */}
         <div className="dashboard-content">
@@ -245,34 +302,78 @@ export default function Dashboard() {
             {/* LEFT */}
             <div className="left-column">
               {/* CODE EDITOR */}
-              <section className="code-card">
+              {isMaximized ? (
+                <button
+                  type="button"
+                  className="code-backdrop"
+                  aria-label="Close expanded editor"
+                  onClick={() => setIsMaximized(false)}
+                />
+              ) : null}
+
+              <section
+                className={`code-card ${isMaximized ? "is-maximized" : ""}`}
+              >
                 <div className="code-header">
                   <div className="file-name">
-                    <span className="js-icon">JS</span>
-                    index.js
+                    <span className="js-icon">{SAMPLE_FILE.language}</span>
+                    {SAMPLE_FILE.name}
                   </div>
 
                   <div className="code-actions">
-                    <button>Raw</button>
-                    <button>
-                      <Copy size={16} />
+                    <button
+                      type="button"
+                      className={isRawView ? "is-active" : undefined}
+                      aria-pressed={isRawView}
+                      onClick={() => setIsRawView((current) => !current)}
+                    >
+                      {isRawView ? "Pretty" : "Raw"}
                     </button>
-                    <button>
-                      <Copy size={16} />
+                    <button
+                      type="button"
+                      aria-label={copied ? "Copied" : "Copy file"}
+                      title={copied ? "Copied" : "Copy"}
+                      onClick={() => void handleCopyCode()}
+                    >
+                      {copied ? <CheckCircle2 size={16} /> : <Copy size={16} />}
                     </button>
-                    <button>
-                      <Maximize2 size={16} />
+                    <button
+                      type="button"
+                      aria-label="Download file"
+                      title="Download"
+                      onClick={handleDownloadCode}
+                    >
+                      <Download size={16} />
+                    </button>
+                    <button
+                      type="button"
+                      aria-label={
+                        isMaximized ? "Exit full screen" : "Expand editor"
+                      }
+                      title={isMaximized ? "Minimize" : "Expand"}
+                      onClick={() => setIsMaximized((current) => !current)}
+                    >
+                      {isMaximized ? (
+                        <Minimize2 size={16} />
+                      ) : (
+                        <Maximize2 size={16} />
+                      )}
                     </button>
                   </div>
                 </div>
 
                 <div className="code-editor">
                   <div className="line-numbers">
-                    {Array.from({ length: 31 }, (_, i) => (
+                    {Array.from({ length: lineCount }, (_, i) => (
                       <span key={i}>{i + 1}</span>
                     ))}
                   </div>
 
+                  {isRawView ? (
+                    <pre>
+                      <code>{SAMPLE_FILE.code}</code>
+                    </pre>
+                  ) : (
                   <pre>
                     <code>
                       <span className="keyword">import</span> {"{ "}
@@ -377,7 +478,9 @@ export default function Dashboard() {
                       {"}"}
                     </code>
                   </pre>
+                  )}
 
+                  {isRawView ? null : (
                   <div className="minimap">
                     <span />
                     <span />
@@ -390,6 +493,7 @@ export default function Dashboard() {
                     <span />
                     <span />
                   </div>
+                  )}
                 </div>
               </section>
 

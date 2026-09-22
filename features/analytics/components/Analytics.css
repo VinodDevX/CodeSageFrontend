@@ -1,0 +1,10 @@
+.page-label {
+  padding: 28px 32px;
+}
+
+.page-label h1 {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.4px;
+  color: var(--text);
+}

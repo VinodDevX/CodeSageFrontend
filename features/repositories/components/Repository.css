@@ -3,7 +3,10 @@
 ========================================================= */
 .repository-main {
   position: relative;
+  flex: 1;
+  min-height: 0;
   overflow-y: auto;
+  padding: 0 20px 24px;
 }
 /* =========================================================
    TOP BAR
@@ -15,15 +18,18 @@
   margin-bottom: 30px;
 }
 .repository-eyebrow {
-  margin: 0;
-  color: #9b6cff;
-  font-size: 26px;
+  margin: 0 0 8px;
+  color: var(--accent-text);
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.14em;
-  padding-top: 52px;
+}
+
+.repository-topbar .repository-eyebrow {
+  padding-top: 24px;
 }
 .repository-topbar span {
-  color: #9ca3af;
+  color: var(--text-subtle);
   font-size: 14px;
 }
 /* =========================================================
@@ -80,11 +86,11 @@
   align-items: center;
   justify-content: center;
 
-  border: 1px solid rgba(139, 92, 246, 0.4);
+  border: 1px solid var(--accent-border);
 
   border-radius: 20px;
 
-  background: rgba(139, 92, 246, 0.08);
+  background: var(--accent-bg);
 
   box-shadow:
     0 0 30px rgba(139, 92, 246, 0.16),
@@ -94,12 +100,12 @@
 .repository-code-icon span {
   font-size: 26px;
   font-weight: 700;
-  color: #c4b5fd;
+  color: var(--accent-text);
 }
 
 .spark {
   position: absolute;
-  color: #a78bfa;
+  color: var(--accent-text);
   font-size: 14px;
 }
 
@@ -127,18 +133,19 @@
 
   font-size: 28px;
   font-weight: 700;
+  letter-spacing: -0.4px;
 
-  color: #f9fafb;
+  color: var(--text);
 }
 
 .repository-empty-state h2 span {
-  color: #a78bfa;
+  color: var(--accent-text);
 }
 
 .repository-empty-state > p {
   margin: 0 0 27px;
 
-  color: #8f96a3;
+  color: var(--text-subtle);
 
   font-size: 14px;
 
@@ -192,7 +199,7 @@
 
   margin-top: 20px;
 
-  color: #717887;
+  color: var(--text-subtle);
 
   font-size: 12px;
 }
@@ -231,13 +238,15 @@
 .imported-header h2 {
   margin: 0 0 7px;
 
-  font-size: 25px;
-  color: #f8fafc;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.4px;
+  color: var(--text);
 }
 
 .imported-header span {
-  color: #858c99;
-  font-size: 13px;
+  color: var(--text-subtle);
+  font-size: 14px;
 }
 
 .add-repository-button {
@@ -249,13 +258,13 @@
 
   padding: 10px 14px;
 
-  border: 1px solid rgba(139, 92, 246, 0.35);
+  border: 1px solid var(--accent-border);
 
   border-radius: 8px;
 
-  background: rgba(139, 92, 246, 0.08);
+  background: var(--accent-bg);
 
-  color: #c4b5fd;
+  color: var(--accent-text);
 
   cursor: pointer;
 
@@ -266,8 +275,8 @@
 }
 
 .add-repository-button:hover {
-  background: rgba(139, 92, 246, 0.15);
-  border-color: rgba(139, 92, 246, 0.55);
+  background: var(--accent-bg);
+  border-color: var(--accent-text);
 }
 
 /* =========================================================
@@ -298,11 +307,13 @@
 
   padding: 17px 18px;
 
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  border: 1px solid var(--border);
 
   border-radius: 12px;
 
-  background: rgba(255, 255, 255, 0.025);
+  background: var(--bg-card);
+
+  color: var(--text);
 
   transition:
     border-color 0.2s ease,
@@ -310,9 +321,9 @@
 }
 
 .repository-row:hover {
-  border-color: rgba(139, 92, 246, 0.25);
+  border-color: var(--accent-border);
 
-  background: rgba(139, 92, 246, 0.035);
+  background: var(--accent-bg);
 }
 
 /* =========================================================
@@ -328,7 +339,7 @@
 }
 
 .repository-bullet {
-  color: #a78bfa;
+  color: var(--accent-text);
 
   font-size: 22px;
 
@@ -344,9 +355,10 @@
 }
 
 .repository-info strong {
-  color: #f3f4f6;
+  color: var(--text);
   margin-top: 15px;
   font-size: 14px;
+  font-weight: 600;
 
   white-space: nowrap;
   overflow: hidden;
@@ -354,9 +366,9 @@
 }
 
 .repository-info span {
-  color: #707887;
+  color: var(--text-subtle);
 
-  font-size: 11px;
+  font-size: 12px;
 
   white-space: nowrap;
   overflow: hidden;
@@ -378,9 +390,9 @@
   align-items: center;
   gap: 5px;
 
-  color: #858c99;
+  color: var(--text-subtle);
 
-  font-size: 11px;
+  font-size: 12px;
 
   white-space: nowrap;
 }
@@ -404,36 +416,36 @@
 
   padding: 7px 9px;
 
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--btn-secondary-border);
 
   border-radius: 7px;
 
-  background: rgba(255, 255, 255, 0.035);
+  background: var(--btn-secondary-bg);
 
-  color: #aeb4bf;
+  color: var(--btn-secondary-text);
 
   cursor: pointer;
 
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 500;
 
   transition: 0.2s ease;
 }
 
 .repository-action-button:hover {
-  color: #ddd6fe;
+  color: var(--accent-text);
 
-  border-color: rgba(139, 92, 246, 0.35);
+  border-color: var(--accent-border);
 
-  background: rgba(139, 92, 246, 0.1);
+  background: var(--accent-bg);
 }
 
 .repository-action-button.delete-action:hover {
-  color: #fca5a5;
+  color: var(--danger-text);
 
-  border-color: rgba(239, 68, 68, 0.35);
+  border-color: var(--danger-text);
 
-  background: rgba(239, 68, 68, 0.08);
+  background: var(--danger-bg);
 }
 
 /* =========================================================
@@ -454,7 +466,7 @@
 
   padding: 25px;
 
-  background: rgba(0, 0, 0, 0.7);
+  background: var(--modal-overlay);
 
   backdrop-filter: blur(7px);
 }
@@ -471,19 +483,13 @@
 
   overflow-y: auto;
 
-  border: 1px solid rgba(139, 92, 246, 0.2);
+  border: 1px solid var(--border);
 
   border-radius: 16px;
 
-  background: linear-gradient(
-    145deg,
-    rgba(25, 25, 35, 0.98),
-    rgba(13, 13, 20, 0.98)
-  );
+  background: var(--bg-card);
 
-  box-shadow:
-    0 30px 100px rgba(0, 0, 0, 0.6),
-    0 0 50px rgba(139, 92, 246, 0.08);
+  box-shadow: var(--shadow-popover);
 }
 
 /* =========================================================
@@ -497,19 +503,19 @@
 
   padding: 24px 25px 20px;
 
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid var(--border);
 }
 
 .repository-modal-header h2 {
   margin: 0 0 6px;
 
-  color: #f9fafb;
+  color: var(--text);
 
   font-size: 21px;
 }
 
 .repository-modal-header span {
-  color: #7f8794;
+  color: var(--text-subtle);
 
   font-size: 12px;
 }
@@ -522,13 +528,13 @@
   align-items: center;
   justify-content: center;
 
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--btn-secondary-border);
 
   border-radius: 7px;
 
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--btn-secondary-bg);
 
-  color: #8d95a2;
+  color: var(--icon);
 
   cursor: pointer;
 
@@ -536,9 +542,9 @@
 }
 
 .modal-close-button:hover {
-  color: #fff;
+  color: var(--text);
 
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--bg-hover);
 }
 
 /* =========================================================
@@ -565,7 +571,7 @@
 
   padding: 16px 8px;
 
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid var(--border);
 }
 
 .modal-repository-item:last-child {
@@ -595,13 +601,13 @@
   align-items: center;
   justify-content: center;
 
-  border: 1px solid rgba(139, 92, 246, 0.25);
+  border: 1px solid var(--accent-border);
 
   border-radius: 9px;
 
-  background: rgba(139, 92, 246, 0.08);
+  background: var(--accent-bg);
 
-  color: #c4b5fd;
+  color: var(--accent-text);
 }
 
 .modal-repository-info > div:last-child {
@@ -614,7 +620,7 @@
 }
 
 .modal-repository-info strong {
-  color: #f3f4f6;
+  color: var(--text);
 
   font-size: 13px;
 
@@ -624,7 +630,7 @@
 }
 
 .modal-repository-info span {
-  color: #707887;
+  color: var(--text-subtle);
 
   font-size: 11px;
 
@@ -647,13 +653,13 @@
 .modal-repository-details span {
   padding: 5px 8px;
 
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border);
 
   border-radius: 5px;
 
-  color: #8c94a1;
+  color: var(--text-muted);
 
-  background: rgba(255, 255, 255, 0.025);
+  background: var(--metric-bg);
 
   font-size: 10px;
 }
@@ -674,13 +680,13 @@
 
   padding: 8px 12px;
 
-  border: 1px solid rgba(139, 92, 246, 0.3);
+  border: 1px solid var(--accent-border);
 
   border-radius: 7px;
 
-  background: rgba(139, 92, 246, 0.1);
+  background: var(--accent-bg);
 
-  color: #c4b5fd;
+  color: var(--accent-text);
 
   cursor: pointer;
 
@@ -691,9 +697,9 @@
 }
 
 .modal-import-button:hover {
-  background: rgba(139, 92, 246, 0.2);
+  background: var(--accent-bg);
 
-  border-color: rgba(139, 92, 246, 0.5);
+  border-color: var(--accent-text);
 
   transform: translateY(-1px);
 }
@@ -710,9 +716,9 @@
 
   padding: 14px 25px;
 
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid var(--border);
 
-  color: #656d7a;
+  color: var(--text-subtle);
 
   font-size: 10px;
 }
