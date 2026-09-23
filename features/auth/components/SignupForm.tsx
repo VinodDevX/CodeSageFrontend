@@ -22,6 +22,7 @@ import {
 import { FaGithub } from "react-icons/fa";
 import { signupUser } from "@/app/redux/slices/authslice";
 import type { AppDispatch } from "@/app/redux/store";
+import { startGithubLogin } from "@/lib/auth/githubLogin";
 
 export default function Login() {
 const router = useRouter();
@@ -262,7 +263,11 @@ const router = useRouter();
                 <span>or continue with GitHub</span>
               </div>
 
-              <button type="button" className="github-btn">
+              <button
+                type="button"
+                className="github-btn"
+                onClick={startGithubLogin}
+              >
                 <FaGithub size={28} />
               </button>
             </form>
