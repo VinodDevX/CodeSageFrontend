@@ -483,6 +483,8 @@ body {
 }
 
 .github-btn {
+  margin-top: 25px;
+
   width: 100%;
 
   height: 52px;
@@ -499,6 +501,8 @@ body {
 
   align-items: center;
 
+  gap: 10px;
+  
   justify-content: center;
 
   cursor: pointer;

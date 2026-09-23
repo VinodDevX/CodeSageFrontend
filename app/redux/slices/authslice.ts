@@ -15,47 +15,37 @@ import type {
   LoginRequest,
   SignupRequest,
 } from "../types/auth.types";
+import axios from "axios";
 
 export const signupUser = createAsyncThunk<LoginPayload, SignupRequest>(
   "auth/signupUser",
   async (signupData) => {
-    const response = await fetch(`${BASE_URL}/api/auth/register`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(signupData),
-    });
-
-    if (!response.ok) {
-      throw new Error("Signup failed");
-    }
-
-    return response.json();
+    const { data } = await axios.post<LoginPayload>(`${BASE_URL}/api/auth/register`, signupData);
+    return data;
   }
 );
+
+type LoginApiResponse = {
+  data?: {
+    accessToken?: string;
+    refreshToken?: string;
+    user?: AuthUser;
+  };
+};
 
 export const loginUser = createAsyncThunk<LoginPayload, LoginRequest>(
   "auth/loginUser",
   async (loginData) => {
-    const response = await fetch(
+    const { data } = await axios.post<LoginApiResponse>(
       `${BASE_URL}/api/auth/login`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(loginData),
-      }
+      loginData
     );
 
-    if (!response.ok) {
-      throw new Error("Login failed");
-    }
-
-    const data = await response.json();
     const accessToken = data.data?.accessToken;
     const refreshToken = data.data?.refreshToken;
+    const user = data.data?.user;
 
-    if (!accessToken) {
+    if (!accessToken || !user) {
       throw new Error("Login failed");
     }
 
@@ -66,8 +56,7 @@ export const loginUser = createAsyncThunk<LoginPayload, LoginRequest>(
     }
 
     return {
-      ...data.data,
-      user: data.data?.user,
+      user,
       token: accessToken,
     };
   }
@@ -81,18 +70,14 @@ type GetMeResponse = {
 export const getCurrentUser = createAsyncThunk<AuthUser, string>(
   "auth/getCurrentUser",
   async (token) => {
-    const response = await fetch(`${BASE_URL}/api/auth/me`, {
+    const response = await axios.get<GetMeResponse>(`${BASE_URL}/api/auth/me`, {
       headers: {
         Authorization: `Bearer ${token}`,
-      },
-    });
+        },
+      }
+    );
 
-    if (!response.ok) {
-      throw new Error("Unable to get current user");
-    }
-
-    const data: GetMeResponse = await response.json();
-    return data.user;
+    return response.data.user;
   }
 );
 

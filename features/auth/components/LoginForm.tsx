@@ -20,13 +20,12 @@ import { FaGithub } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { loginUser } from "@/app/redux/slices/authslice";
 import type { AppDispatch } from "@/app/redux/store";
+import { startGithubLogin } from "@/lib/auth/githubLogin";
 
 export default function Login() {
-
-const router = useRouter();
+  const router = useRouter();
   const dispatch = useDispatch<AppDispatch>();
   const [showPassword, setShowPassword] = useState(false);
-
 
   const [postData, setPostData] = useState({
     email: "",
@@ -41,6 +40,10 @@ const router = useRouter();
     } catch {
       // The rejected thunk stores the API error in the auth state.
     }
+  };
+
+  const handleGithubLogin = () => {
+    startGithubLogin();
   };
 
   return (
@@ -179,16 +182,16 @@ const router = useRouter();
 
               <button onClick={handleLogin} type="button" className="login-btn">
                 Log In
-
                 <ArrowRight size={22} />
               </button>
 
-              <div className="divider">
-                <span>or continue with GitHub</span>
-              </div>
-
-              <button type="button" className="github-btn">
+              <button
+                onClick={handleGithubLogin}
+                type="button"
+                className="github-btn"
+              >
                 <FaGithub size={28} />
+                <span>or continue with GitHub</span>
               </button>
             </form>
           </div>
